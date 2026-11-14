@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Social Science · Unit 1</title>
+<style>
+:root{--bg:#f4f6fd;--card:#fff;--tx:#1f2340;--mu:#6b7090;--bd:#e3e6f3;--sh:0 6px 20px #2a306a14}
+@media (prefers-color-scheme:dark){:root{--bg:#12141f;--card:#1c2030;--tx:#eceefb;--mu:#9aa0c0;--bd:#2e3350;--sh:0 6px 20px #0006}}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 "Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+.hero{background:linear-gradient(120deg,#f59f00,#f76707 50%,#e64980);color:#fff;padding:28px 18px 56px;text-align:center}
+.hero h1{margin:0;font-size:clamp(24px,5vw,38px);letter-spacing:.5px}
+.hero p{margin:6px 0 16px;opacity:.9}
+.bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;padding:8px 16px;background:#ffffff2e;color:#fff;font-weight:600;backdrop-filter:blur(4px)}
+button:hover{filter:brightness(1.12)}
+.big{background:#fff;color:#d9480f;font-size:17px;padding:11px 26px;box-shadow:0 4px 14px #0003}
+main{max-width:1040px;margin:-34px auto 40px;padding:0 14px}
+.card{background:var(--card);border-radius:20px;box-shadow:var(--sh);margin-bottom:22px;overflow:hidden;border:1px solid var(--bd)}
+.ch{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:14px 18px;background:linear-gradient(100deg,var(--c),var(--c2));color:#fff}
+.ch .em{font-size:34px;line-height:1}
+.ch h2{margin:0 auto 0 0;font-size:21px;text-transform:uppercase;letter-spacing:.6px}
+.ch button{background:#fff;color:var(--c);box-shadow:0 2px 8px #0002}
+.body{padding:14px 18px 18px}
+.sh{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 10px}
+.sh h3{margin:0 auto 0 0;font-size:15px;color:var(--c)}
+.sh button.o{background:var(--c);color:#fff;padding:4px 12px;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.item{position:relative}
+.item a{display:block;text-decoration:none;color:var(--tx);border-radius:14px;overflow:hidden;border:1px solid var(--bd);transition:.15s}
+.item a:hover{transform:translateY(-3px);box-shadow:var(--sh);border-color:var(--c)}
+.v .th{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,#ff6b6b,#c92a2a)}
+.v img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.v .pl{position:absolute;inset:0;margin:auto;width:38px;height:38px;border-radius:50%;background:#e62117e6;color:#fff;display:grid;place-items:center;font-size:15px;padding-left:3px;z-index:1}
+.v b,.g b{display:block;padding:6px 10px;font-size:13px}
+.g a{padding:16px 10px 10px;text-align:center;background:linear-gradient(160deg,var(--c)18,transparent)}
+.g .ic{font-size:30px;display:block}
+.g small{color:var(--mu);display:block;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ctl{display:none;position:absolute;top:4px;right:4px;gap:3px;z-index:3}
+.edit .ctl{display:flex}
+.ctl button{padding:2px 7px;font-size:12px;background:#000b;color:#fff}
+.adm{display:none}
+.edit .adm{display:inline-block}
+.adm{background:var(--bd);color:var(--tx);padding:4px 12px;font-size:13px}
+.empty{color:var(--mu);font-style:italic}
+#queue{display:none;position:fixed;right:14px;bottom:14px;width:min(430px,calc(100% - 28px));max-height:70vh;overflow:auto;background:var(--card);border:3px solid #fd7e14;border-radius:18px;padding:14px;z-index:20;box-shadow:0 10px 40px #0006}
+#queue h4{margin:0 0 4px;font-size:16px}
+#queue p{margin:4px 0 8px;font-size:13px;color:var(--mu)}
+#queue .row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+#queue button{background:var(--bd);color:var(--tx);padding:6px 12px;font-size:13px}
+#queue button.p{background:#fd7e14;color:#fff}
+#queue ol{margin:0;padding-left:20px;font-size:13px}
+#queue a{color:#4263eb}
+details{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px 16px;margin-bottom:22px;box-shadow:var(--sh)}
+summary{cursor:pointer;font-weight:700}
+details code{background:var(--bd);padding:1px 5px;border-radius:4px}
+dialog{border:0;border-radius:18px;background:var(--card);color:var(--tx);width:min(520px,92vw);box-shadow:0 20px 60px #0007}
+dialog::backdrop{background:#0007}
+dialog textarea,dialog input{width:100%;font:inherit;padding:9px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx)}
+dialog textarea{min-height:150px}
+dialog label{display:block;margin:8px 0 3px;font-size:13px;color:var(--mu)}
+dialog button{background:var(--bd);color:var(--tx)}
+dialog button.p{background:#f76707;color:#fff}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#222;color:#fff;padding:9px 18px;border-radius:20px;z-index:30;display:none}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>🌍 Social Science · Unit 1</h1>
+  <p>My family and my school · Vídeos, canciones y juegos</p>
+  <div class="bar">
+    <button class="big" data-top="all">🚀 Abrir todo el tema</button>
+    <button id="edit">✏️ Modo edición</button>
+    <label style="align-self:center;font-size:14px" title="Abre los enlaces de uno en uno, sin intentar abrir varios de golpe"><input type="checkbox" id="step"> Paso a paso</label>
+  </div>
+</div>
+<main>
+  <details>
+    <summary>⚠️ Si solo se abre una pestaña…</summary>
+    <p>Los navegadores permiten abrir una sola ventana por clic y bloquean el resto como pop-ups.</p>
+    <p><b>Solución definitiva:</b> permite las ventanas emergentes para este archivo (icono de la barra de direcciones → <i>Configuración del sitio</i> → <i>Ventanas emergentes y redirecciones</i> → <i>Permitir</i>). Después «Abrir todo» abrirá todas las pestañas.</p>
+    <p><b>Sin tocar nada:</b> si hay bloqueo, aparece un panel naranja con los enlaces pendientes y el botón «Abrir siguiente»: cada clic abre uno. Tampoco se pierde ningún enlace.</p>
+    <p>Los cambios se guardan en este navegador. En modo edición puedes <b>Exportar/Importar</b> una copia.</p>
+  </details>
+  <div id="app"></div>
+  <div class="adm" id="admBar" style="text-align:center">
+    <button class="adm" id="addTopic">+ Nuevo tema</button>
+    <button class="adm" id="exp">Exportar</button>
+    <button class="adm" id="imp">Importar</button>
+    <button class="adm" id="rst">Restaurar inicial</button>
+    <input type="file" id="file" accept=".json" hidden>
+  </div>
+</main>
+<div id="queue"></div>
+<div class="toast" id="toast"></div>
+<dialog id="dlg"><form method="dialog">
+  <h3 id="dlgT" style="margin-top:0"></h3><div id="dlgB"></div>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">
+    <button type="button" id="dlgC">Cancelar</button><button class="p" id="dlgOk" value="ok">Guardar</button></div>
+</form></dialog>
+
+<script>
+const KEY='panelSocialU1v1';
+const uid=()=>Math.random().toString(36).slice(2,9);
+const L=a=>a.map(u=>({id:uid(),url:u,title:''}));
+const Y=i=>'https://www.youtube.com/watch?v='+i, W=p=>'https://wordwall.net/'+p;
+const sec=(name,links)=>({id:uid(),name,links:L(links)});
+function defaults(){return[
+ {id:uid(),name:'My family and my school',em:'🏫',c:'#f08c00',c2:'#f76707',sections:[
+  sec('Vídeos y canciones',['FHaObkHEkHQ', 'LFXkGbqGkhg', 'x2tddys1zZ0', 'lGir6PUN-as', 'ii_LtHrEiao', 'eluzN-eCJz0', '2i4CbCINjWA', 'GFhNgcxsUeM', '3BmczLcMlbo', 'bVCKj0T9-gc', 'AT8qLCmseuE'].map(Y)),
+  sec('Juegos',['61300/457/532', '61300/457/645', '61300/457/985', '61300/457/551', '26430/281/556', '61682/018/263', '36011/376/205', '36011/376/610', '62797/995/912', '62798/038/222', '62514/159/202', '62514/159/416', '62003/119/832', '62003/119/948', '62003/119/456', '62004/281/129', '62004/281/804', '62004/281/310', '62004/281/988'].map(p=>W('play/'+p)))]}
+];}
+let data,queue=[];
+try{data=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!Array.isArray(data))data=defaults();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function ytId(u){try{const x=new URL(u);if(x.hostname.includes('youtu.be'))return x.pathname.slice(1);if(x.hostname.includes('youtube'))return x.searchParams.get('v')}catch(e){}return null}
+function short(u){try{const x=new URL(u);return x.hostname.replace('www.','')+x.pathname.replace(/^\/(es\/)?/,'/')}catch(e){return u}}
+const urlsOf=o=>o.sections?o.sections.flatMap(s=>s.links.map(l=>l.url)):o.links.map(l=>l.url);
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2800)}
+
+function item(l,i){
+  const id=ytId(l.url),ctl='<div class="ctl"><button data-a="editLink">✎</button><button data-a="delLink">✕</button></div>';
+  if(id)return `<div class="item v" data-l="${l.id}"><a href="${esc(l.url)}" target="_blank" rel="noopener"><div class="th"><img loading="lazy" src="https://i.ytimg.com/vi/${esc(id)}/mqdefault.jpg" alt="" onerror="this.remove()"><span class="pl">▶</span></div><b>${esc(l.title||'Vídeo '+(i+1))}</b></a>${ctl}</div>`;
+  return `<div class="item g" data-l="${l.id}"><a href="${esc(l.url)}" target="_blank" rel="noopener"><span class="ic">🎮</span><b>${esc(l.title||'Juego '+(i+1))}</b><small>${esc(short(l.url))}</small></a>${ctl}</div>`;
+}
+function render(){
+  $('#app').innerHTML=data.map(t=>`
+  <section class="card" data-c="${t.id}" style="--c:${t.c};--c2:${t.c2}">
+   <div class="ch"><span class="em">${t.em}</span><h2>${esc(t.name)}</h2>
+    <button data-a="openCat">▶ Abrir tema (${urlsOf(t).length})</button>
+    <button class="adm" data-a="renCat">✎ Renombrar</button><button class="adm" data-a="delCat">🗑</button></div>
+   <div class="body">${t.sections.map(s=>`
+    <div data-s="${s.id}"><div class="sh"><h3>${esc(s.name)} · ${s.links.length}</h3>
+     <button class="o" data-a="openSec">▶ Abrir ${esc(s.name.toLowerCase())}</button>
+     <button class="adm" data-a="addLinks">+ Enlaces</button><button class="adm" data-a="renSec">✎</button><button class="adm" data-a="delSec">🗑</button></div>
+     ${s.links.length?`<div class="grid">${s.links.map(item).join('')}</div>`:'<div class="empty">Sin enlaces todavía</div>'}</div>`).join('')}
+    <div style="margin-top:12px"><button class="adm" data-a="addSec">+ Nueva sección</button></div>
+   </div></section>`).join('')||'<p class="empty" style="text-align:center">No hay temas.</p>';
+}
+
+/* ---- apertura de pestañas ---- */
+function tryOpen(u){const w=window.open(u,'_blank');if(w){try{w.opener=null}catch(e){}return true}return false}
+function openLinks(urls){
+  urls=urls.filter(Boolean);if(!urls.length)return;
+  queue=urls.slice();
+  if(urls.length>1&&$('#step').checked){showQueue(true);return}
+  while(queue.length){if(tryOpen(queue[0]))queue.shift();else break}
+  if(queue.length)showQueue(false);else{$('#queue').style.display='none';toast('✔ '+urls.length+' pestañas abiertas')}
+}
+function showQueue(manual){
+  const q=$('#queue');q.style.display='block';
+  q.innerHTML=`<h4>${manual?'🐾 Paso a paso':'⚠️ Bloqueadas '+queue.length+' pestañas'}</h4>
+  <p>${manual?'':'El navegador bloqueó los pop-ups. Permítelos para este sitio o sigue con los botones: '}cada clic abre enlaces nuevos.</p>
+  <div class="row"><button class="p" data-q="1">Abrir siguiente (${queue.length})</button><button data-q="5">+5</button><button data-q="all">Todas</button><button data-q="copy">Copiar</button><button data-q="x">Cerrar</button></div>
+  <ol>${queue.map(u=>`<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(short(u))}</a></li>`).join('')}</ol>`;
+}
+$('#queue').addEventListener('click',e=>{
+  const k=e.target.dataset.q;if(!k)return;
+  if(k==='x'){queue=[];$('#queue').style.display='none';return}
+  if(k==='copy'){navigator.clipboard&&navigator.clipboard.writeText(queue.join('\n')).then(()=>toast('Copiado'),()=>toast('No se pudo copiar'));return}
+  const n=k==='all'?queue.length:+k;
+  for(let i=0;i<n&&queue.length;i++){if(tryOpen(queue[0]))queue.shift();else break}
+  if(queue.length)showQueue(false);else{$('#queue').style.display='none';toast('✔ Todo abierto')}
+});
+
+/* ---- diálogo ---- */
+function ask(title,fields,ok){
+  return new Promise(res=>{
+    const d=$('#dlg');$('#dlgT').textContent=title;$('#dlgOk').textContent=ok||'Guardar';
+    $('#dlgB').innerHTML=fields.map((f,i)=>`<label>${f.l}</label>${f.area?`<textarea id="f${i}" placeholder="${esc(f.ph||'')}"></textarea>`:`<input id="f${i}" value="${esc(f.v||'')}" placeholder="${esc(f.ph||'')}">`}`).join('');
+    d.onclose=()=>{d.onclose=null;res(d.returnValue==='ok'?fields.map((_,i)=>$('#f'+i).value.trim()):null)};
+    $('#dlgC').onclick=()=>{d.returnValue='';d.close()};
+    d.showModal();$('#f0').focus();
+  });
+}
+const parseUrls=t=>t.split(/\s+/).filter(s=>/^https?:\/\//i.test(s));
+const PAL=[['#ff6b6b','#ff9f43'],['#1c7ed6','#22b8cf'],['#7048e8','#e64980'],['#2f9e44','#94d82d'],['#e8590c','#fab005']];
+
+$('#app').addEventListener('click',async e=>{
+  const b=e.target.closest('button[data-a]');if(!b)return;
+  const a=b.dataset.a,t=data.find(x=>x.id===b.closest('.card').dataset.c);
+  const sE=b.closest('[data-s]'),s=sE&&t.sections.find(x=>x.id===sE.dataset.s);
+  const lE=b.closest('[data-l]'),l=lE&&s.links.find(x=>x.id===lE.dataset.l);
+  if(a==='openCat')return openLinks(urlsOf(t));
+  if(a==='openSec')return openLinks(urlsOf(s));
+  if(a==='addSec'){const r=await ask('Nueva sección',[{l:'Nombre',ph:'Ej.: Canciones'}]);if(r&&r[0])t.sections.push({id:uid(),name:r[0],links:[]})}
+  if(a==='renCat'){const r=await ask('Renombrar tema',[{l:'Nombre',v:t.name}]);if(r&&r[0])t.name=r[0]}
+  if(a==='delCat'&&confirm('¿Borrar «'+t.name+'»?'))data=data.filter(x=>x!==t);
+  if(a==='renSec'){const r=await ask('Renombrar sección',[{l:'Nombre',v:s.name}]);if(r&&r[0])s.name=r[0]}
+  if(a==='delSec'&&confirm('¿Borrar «'+s.name+'»?'))t.sections=t.sections.filter(x=>x!==s);
+  if(a==='addLinks'){const r=await ask('Añadir enlaces a «'+s.name+'»',[{l:'Pega uno o varios enlaces (uno por línea)',area:1,ph:'https://…'}],'Añadir');
+    if(r){const u=parseUrls(r[0]);u.forEach(x=>s.links.push({id:uid(),url:x,title:''}));toast(u.length?u.length+' añadido(s)':'No hay enlaces válidos (deben empezar por http)')}}
+  if(a==='editLink'){const r=await ask('Editar enlace',[{l:'URL',v:l.url},{l:'Título (opcional)',v:l.title}]);if(r&&r[0]){l.url=/^https?:\/\//i.test(r[0])?r[0]:'https://'+r[0];l.title=r[1]}}
+  if(a==='delLink')s.links=s.links.filter(x=>x!==l);
+  save();render();
+});
+document.querySelector('[data-top]').onclick=()=>openLinks(data.flatMap(urlsOf));
+$('#edit').onclick=()=>{const on=document.body.classList.toggle('edit');$('#edit').textContent=on?'✅ Terminar edición':'✏️ Modo edición'};
+$('#addTopic').onclick=async()=>{const r=await ask('Nuevo tema',[{l:'Nombre',ph:'Ej.: Animals'},{l:'Emoji',v:'📘'}]);
+  if(r&&r[0]){const p=PAL[data.length%PAL.length];data.push({id:uid(),name:r[0],em:r[1]||'📘',c:p[0],c2:p[1],sections:[{id:uid(),name:'Vídeos',links:[]},{id:uid(),name:'Juegos',links:[]}]});save();render()}};
+$('#rst').onclick=()=>{if(confirm('¿Restaurar la lista inicial? Se perderán tus cambios.')){data=defaults();save();render()}};
+$('#exp').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:'application/json'}));a.download='panel-social-u1.json';a.click()};
+$('#imp').onclick=()=>$('#file').click();
+$('#file').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!Array.isArray(j))throw 0;data=j;save();render();toast('Importado')}catch(x){toast('Archivo no válido')}e.target.value=''};
+try{$('#step').checked=localStorage.getItem(KEY+'s')==='1'}catch(e){}
+$('#step').onchange=e=>{try{localStorage.setItem(KEY+'s',e.target.checked?'1':'0')}catch(x){}};
+document.body.classList.remove('edit');render();
+</script>
+</body>
+</html>
